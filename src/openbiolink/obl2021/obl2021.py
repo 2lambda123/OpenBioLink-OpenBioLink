@@ -1,5 +1,4 @@
 import os
-import pickle
 import urllib
 import zipfile
 from os import path
@@ -12,6 +11,7 @@ from openbiolink.utils import split_list_in_batches_iter
 from tqdm import tqdm
 
 from openbiolink.graph_creation.file_downloader import FileDownloader
+import fickling
 
 
 class OBL2021Dataset(object):
@@ -56,9 +56,9 @@ class OBL2021Dataset(object):
         self._num_relations = len(self._relation_label_to_id)
 
         with open(os.path.join(self._dataset_path, '_dict_of_heads.pkl'), 'rb') as f:
-            self._dict_of_heads = pickle.load(f)
+            self._dict_of_heads = fickling.load(f)
         with open(os.path.join(self._dataset_path, '_dict_of_tails.pkl'), 'rb') as f:
-            self._dict_of_tails = pickle.load(f)
+            self._dict_of_tails = fickling.load(f)
 
     def _download(self):
         if not path.isdir(self._dataset_path):

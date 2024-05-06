@@ -24,7 +24,8 @@ setuptools.setup(
         "numpy",
         "pandas>=0.23.4",
         "tqdm>=4.29.1",
-        "torch"
+        "torch",
+        "fickling>=0.1.3,~=0.1.0",
     ],
     extras_require={
         "docs": [
