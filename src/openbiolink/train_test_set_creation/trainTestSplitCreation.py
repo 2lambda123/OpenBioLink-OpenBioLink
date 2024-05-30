@@ -1,7 +1,6 @@
 import logging
 import math
 import os
-import random
 import sys
 from typing import Optional
 
@@ -14,8 +13,9 @@ from openbiolink.graph_creation.metadata_edge import edgeMetadata as meta
 from openbiolink.train_test_set_creation.sampler import NegativeSampler
 from openbiolink.train_test_set_creation.trainTestSetWriter import TrainTestSetWriter
 from openbiolink.train_test_set_creation import ttsConfig as ttsConf
+import secrets
 
-random.seed(glob.RANDOM_STATE)
+secrets.SystemRandom().seed(glob.RANDOM_STATE)
 np.random.seed(glob.RANDOM_STATE)
 
 
@@ -189,7 +189,7 @@ class TrainTestSetCreation:
         if 0 < val < 1 and not float(val).is_integer() and not crossval:
             logging.info("Creating validation set ...")
             rand_index = list(train_val_set.index)
-            random.shuffle(rand_index)
+            secrets.SystemRandom().shuffle(rand_index)
 
             val_indices, train_indices = np.array_split(rand_index, [int(len(rand_index) * val)])
 
@@ -372,7 +372,7 @@ class TrainTestSetCreation:
         n_folds = int(n_folds)
 
         rand_index = list(train_val_set.index)
-        random.shuffle(rand_index)
+        secrets.SystemRandom().shuffle(rand_index)
         chunks = np.array_split(rand_index, n_folds)
 
         for i in range(n_folds):
