@@ -32,8 +32,6 @@ class PostgresDumpParser:
                 else:
                     if not (len(cols) == len(entry_list)):
                         logging.error(
-                            "PostgresDumpParser: Number of columns provided for table %s are different from number found in table. %d provided, %d found"
-                            % (table_name, len(cols), len(entry_list))
-                        )
+                            "PostgresDumpParser: Number of columns provided for table %s are different from number found in table. %d provided, %d found", table_name, len(cols), len(entry_list))
                         sys.exit()
         return df
