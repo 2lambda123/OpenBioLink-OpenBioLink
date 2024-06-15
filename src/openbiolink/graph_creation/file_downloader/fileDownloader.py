@@ -32,8 +32,8 @@ class FileDownloader:
                 reporthook = FileDownloader.download_progress_hook(t)
                 urllib.request.urlretrieve(url, o_file_path, reporthook)
         except urllib.error.HTTPError as err:
-            logging.error("HTTP %s %s:  %s" % (err.code, err.msg, err.geturl()))
+            logging.error("HTTP %s %s:  %s", err.code, err.msg, err.geturl())
             sys.exit()
         except urllib.error.URLError as err:
-            logging.error("Url Error: %s" % (err.msg))
+            logging.error("Url Error: %s", (err.msg))
             sys.exit()

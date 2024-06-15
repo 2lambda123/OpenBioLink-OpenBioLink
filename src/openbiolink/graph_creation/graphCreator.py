@@ -293,11 +293,9 @@ class GraphCreator:
 
         if not no_cutoff_defined and nr_edges_below_cutoff == 0:
             logging.warning(
-                "No edges of type %s were cut off by quality cutoff, maybe the metric has changed?"
-                % edge_metadata.edgeType.name
-            )
+                "No edges of type %s were cut off by quality cutoff, maybe the metric has changed?", edge_metadata.edgeType.name)
         if nr_edges_after_mapping == 0:
-            logging.warning("No edges of type %s are left after mapping and cutoff!" % edge_metadata.edgeType.name)
+            logging.warning("No edges of type %s are left after mapping and cutoff!", edge_metadata.edgeType.name)
 
         # print statistics
         stats_dic = {
